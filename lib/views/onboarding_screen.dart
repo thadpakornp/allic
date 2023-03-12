@@ -1,6 +1,7 @@
 import 'package:allergic_app/localization/language/languages.dart';
 import 'package:allergic_app/views/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -50,7 +51,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+          padding: EdgeInsets.fromLTRB(2.h, 0.9.h, 2.h, 0.8.h),
           child: Column(
             children: [
               Expanded(
@@ -87,8 +88,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   const Spacer(),
                   _pageIndex == 2
                       ? SizedBox(
-                          height: 60,
-                          width: 60,
+                          height: 8.h,
+                          width: 8.w,
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(
@@ -110,8 +111,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         )
                       : SizedBox(
-                          height: 60,
-                          width: 60,
+                          height: 8.h,
+                          width: 8.w,
                           child: ElevatedButton(
                             onPressed: () {
                               _pageController.nextPage(
@@ -152,7 +153,7 @@ class DotIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 4,
-      height: isActive ? 12 : 4,
+      height: isActive ? 3.h : 1.h,
       decoration: BoxDecoration(
         color: isActive ? Colors.blue : Colors.grey,
         borderRadius: BorderRadius.circular(12),
@@ -177,14 +178,14 @@ class OnboardContent extends StatelessWidget {
       children: [
         Image.asset(
           image,
-          height: 250,
+          height: 45.h,
         ),
         const Spacer(),
         Text(
           title,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 24,
+          style: TextStyle(
+            fontSize: 14.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -192,8 +193,8 @@ class OnboardContent extends StatelessWidget {
         Text(
           description,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 18,
+          style: TextStyle(
+            fontSize: 7.sp,
           )
         ),
         const Spacer(),

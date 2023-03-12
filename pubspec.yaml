@@ -57,6 +57,7 @@ dependencies:
   flutter_local_notifications: ^13.0.0
   timezone: ^0.9.1
   flutter_timezone: ^1.0.4
+  sizer: ^2.0.15
   overlay_support:
   firebase_auth:
   table_calendar:

@@ -24,6 +24,7 @@ import 'localization/locale_constant.dart';
 import 'localization/localizations_delegate.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:sizer/sizer.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -417,42 +418,46 @@ class _MyAppState extends State<MyApp> {
         FocusScope.of(context).requestFocus(FocusNode());
       },
       child: OverlaySupport.global(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          locale: _locale,
-          supportedLocales: const [
-            Locale('en', ''),
-            Locale('th', ''),
-          ],
-          localizationsDelegates: const [
-            AppLocalizationsDelegate(),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          localeResolutionCallback: (locale, supportedLocales) {
-            for (var supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale!.languageCode &&
-                  supportedLocale.countryCode == locale.countryCode) {
-                return supportedLocale;
-              }
-            }
-            return supportedLocales.first;
-          },
-          title: 'ภูมิแพ้แต่เราไม่แพ้',
-          theme: ThemeData(
-            brightness: Brightness.light,
-          ),
-          home: language == ''
-              ? const ChooseLanguate()
-              : isLogin
-                  ? preTest
-                      ? const HomeScreen()
-                      : QuestionScreen(
-                          age: _age,
-                        )
-                  : const OnBoardingScreen(),
-          builder: EasyLoading.init(),
+        child: Sizer(
+          builder: (context, orientation, deviceType) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              locale: _locale,
+              supportedLocales: const [
+                Locale('en', ''),
+                Locale('th', ''),
+              ],
+              localizationsDelegates: const [
+                AppLocalizationsDelegate(),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (locale, supportedLocales) {
+                for (var supportedLocale in supportedLocales) {
+                  if (supportedLocale.languageCode == locale!.languageCode &&
+                      supportedLocale.countryCode == locale.countryCode) {
+                    return supportedLocale;
+                  }
+                }
+                return supportedLocales.first;
+              },
+              title: 'ภูมิแพ้แต่เราไม่แพ้',
+              theme: ThemeData(
+                brightness: Brightness.light,
+              ),
+              home: language == ''
+                  ? const ChooseLanguate()
+                  : isLogin
+                      ? preTest
+                          ? const HomeScreen()
+                          : QuestionScreen(
+                              age: _age,
+                            )
+                      : const OnBoardingScreen(),
+              builder: EasyLoading.init(),
+            );
+          }
         ),
       ),
     );

@@ -16,6 +16,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:sizer/sizer.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -404,12 +405,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 Image.asset('assets/images/5741215-removebg-preview.png'),
                 Text(
                   Languages.of(context)!.signIn,
-                  style: const TextStyle(
-                    fontSize: 30,
+                  style: TextStyle(
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 5.h),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
@@ -435,7 +436,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 2.h),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
